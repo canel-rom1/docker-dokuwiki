@@ -13,17 +13,18 @@ ENV PORT=8080
 RUN apk update \
  && apk add --no-cache \
             curl \
-            php5-cli \
-            php5-ctype \
-            php5-curl \
-            php5-gd \
-            php5-json \
-            php5-ldap \
-            php5-mysqli \
-            php5-opcache \
-            php5-openssl \
-            php5-xml \
-            php5-zlib
+            php7-cli \
+            php7-ctype \
+            php7-curl \
+            php7-gd \
+            php7-json \
+            php7-ldap \
+            php7-mysqli \
+            php7-opcache \
+            php7-openssl \
+            php7-session \
+            php7-xml \
+            php7-zlib
 
 RUN adduser -D -H ${USER}
 
