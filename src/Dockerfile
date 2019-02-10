@@ -40,8 +40,7 @@ VOLUME	["${DW_DIR}/data", "${DW_DIR}/conf", \
 
 EXPOSE "${PORT}"
 
-HEALTHCHECK --interval=1m --timeout=3s \
-  CMD curl -f "http://localhost:${PORT}" || exit 1
+HEALTHCHECK CMD curl -f "http://localhost:${PORT}" || exit 1
 
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh

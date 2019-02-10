@@ -17,6 +17,11 @@ services:
 #      - 'traefik.frontend.rule=Host:HOSTNAME'
 #      - 'traefik.port=8080'
 #      - 'traefik.docker.network=TRAEFIK_NETWORK'
+    healthcheck:
+      interval: 2m
+      timeout: 30s
+      retries: 3
+      start_period: 0s
 
 
 # vim: ft=yaml tw=80 et ts=2 sw=2 sts=2
