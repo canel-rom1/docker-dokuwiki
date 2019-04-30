@@ -1,5 +1,7 @@
 # docker-dokuwiki
-## v0.2v - 10/02/2019
+## v0.3b - 30/04/2019
+- Add volumes, traefik and backups.
+## v0.2b - 10/02/2019
 - Add healthcheck in docker-compose.
 ## v0.1b - 09/02/2019
 - Upgrade to PHP7-

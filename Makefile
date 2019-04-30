@@ -46,4 +46,5 @@ edit:
 	@vim Makefile \
 	     docker-compose.yml \
 	     src/Dockerfile \
-	     src/entrypoint.sh
+	     src/entrypoint.sh \
+	     scripts/backups.sh
