@@ -1,4 +1,4 @@
-# Dokuwiki for Docker with alpine + PHP5
+# Dokuwiki for Docker with alpine + PHP7
 
 ## Getting started
 To run the container:
