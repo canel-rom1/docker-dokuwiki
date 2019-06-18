@@ -2,25 +2,21 @@ version: '3.7'
 services:
   dokuwiki:
     image: 'canelrom1/dokuwiki:latest'
-    #build:
-    #  context: ./src
-    container_name: dokuwiki
-    #restart: on-failure
-    volumes:
-      - 'dokuwiki:/var/www/html'
-    labels:
-      - 'traefik.enable=true'
-      - 'traefik.frontend.rule=Host:site.local'
-      - 'traefik.port=8080'
-      - 'traefik.docker.network=traefik_wan'
+#    build:
+#      context: ./src
+#   restart: on-failure
+    ports:
+      - '80:80'
+#    volumes:
+#      - './dw-conf:/srv/html/conf'
+#      - './dw-data:/srv/html/data'
+#      - './dw-plugins:/srv/html/lib/plugins'
+#      - './dw-tpl:/srv/html/lib/tpl'
     healthcheck:
       interval: 2m
       timeout: 30s
       retries: 3
       start_period: 0s
 
-volumes:
-  dokuwiki:
-    name: dokuwiki
 
 # vim: ft=yaml tw=80 et ts=2 sw=2 sts=2
