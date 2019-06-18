@@ -24,7 +24,7 @@ run:
 	docker run -d \
 		   --name=$(docker_name) \
 		   -p $(dw_port):8080 \
-		   $(docker_organization)/$(docker_image):$(tag)
+		   $(docker_organization)/$(docker_image):latest
 
 stop:
 	docker stop $(docker_name)
