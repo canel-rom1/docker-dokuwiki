@@ -1,0 +1,35 @@
+version: '3.7'
+services:
+  dokuwiki:
+    image: 'canelrom1/dokuwiki-php7:latest'
+    container_name: dokuwiki
+#   restart: on-failure
+    ports:
+      - '80:8080'
+    volumes:
+      - 'dw-conf:/srv/html/conf'
+      - 'dw-data:/srv/html/data'
+      - 'dw-plugins:/srv/html/lib/plugins'
+      - 'dw-tpl:/srv/html/lib/tpl'
+#   labels:
+#     - 'traefik.enable=true'
+#      - 'traefik.frontend.rule=Host:HOSTNAME'
+#      - 'traefik.port=8080'
+#      - 'traefik.docker.network=TRAEFIK_NETWORK'
+    healthcheck:
+      interval: 2m
+      timeout: 30s
+      retries: 3
+      start_period: 0s
+
+volumes:
+  dw-conf:
+    driver: local
+  dw-data:
+    driver: local
+  dw-plugins:
+    driver: local
+  dw-tpl:
+    driver: local
+
+# vim: ft=yaml tw=80 et ts=2 sw=2 sts=2

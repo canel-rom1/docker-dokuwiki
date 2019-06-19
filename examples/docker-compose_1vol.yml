@@ -2,16 +2,19 @@ version: '3.7'
 services:
   dokuwiki:
     image: 'canelrom1/dokuwiki-php7:latest'
-#    build:
-#      context: ./src
-#   restart: on-failure
+    container_name: dokuwiki
     ports:
       - '80:8080'
+    volumes:
+      - 'html:/srv/html'
     healthcheck:
       interval: 2m
       timeout: 30s
       retries: 3
       start_period: 0s
 
+volumes:
+  html:
+    driver: local
 
 # vim: ft=yaml tw=80 et ts=2 sw=2 sts=2
