@@ -1,7 +1,7 @@
 docker_name = dokuwiki
 docker_organization = canelrom1
 docker_image = dokuwiki
-docker_tag = $(shell date +%y%m%d%H%M%S)
+docker_tag = $(shell date +%y%m%d.%H%M%S)
 
 path_data = $(shell pwd)/data
 
@@ -23,7 +23,7 @@ down:
 run:
 	docker run -d \
 		   --name=$(docker_name) \
-		   -p $(dw_port):8080 \
+		   -p $(dw_port):80 \
 		   $(docker_organization)/$(docker_image):latest
 
 stop:

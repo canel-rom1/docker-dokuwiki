@@ -1,11 +1,11 @@
 version: '3.7'
 services:
   dokuwiki:
-    image: 'canelrom1/dokuwiki:latest'
     container_name: dokuwiki
+    image: 'canelrom1/dokuwiki:latest'
 #   restart: on-failure
     ports:
-      - '80:8080'
+      - '80:80'
     volumes:
       - 'dw-conf:/var/www/html/conf'
       - 'dw-data:/var/www/html/data'

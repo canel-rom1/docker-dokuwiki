@@ -1,17 +1,19 @@
 version: '3.7'
 services:
   dokuwiki:
+    container_name: dokuwiki
     image: 'canelrom1/dokuwiki:latest'
     #build:
     #  context: ./src
-    container_name: dokuwiki
     #restart: on-failure
+    networks:
+      - traefik_wan
     volumes:
-      - 'dokuwiki:/var/www/html'
+      - 'html:/var/www/html'
     labels:
       - 'traefik.enable=true'
-      - 'traefik.frontend.rule=Host:site.local'
-      - 'traefik.port=8080'
+      - 'traefik.frontend.rule=Host:wiki.domain.tld'
+      - 'traefik.port=80'
       - 'traefik.docker.network=traefik_wan'
     healthcheck:
       interval: 2m
@@ -20,7 +22,12 @@ services:
       start_period: 0s
 
 volumes:
-  dokuwiki:
-    name: dokuwiki
+  html:
+    name: "dokuwiki"
+    driver: local
+
+networks:
+  traefik_wan:
+    external: True
 
 # vim: ft=yaml tw=80 et ts=2 sw=2 sts=2

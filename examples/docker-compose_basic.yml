@@ -1,10 +1,11 @@
 version: '3.7'
 services:
   dokuwiki:
-    #image: 'canelrom1/dokuwiki:latest'
-    build:
-      context: ./src
-#   restart: on-failure
+    container_name: dokuwiki
+    image: 'canelrom1/dokuwiki:latest'
+    #build:
+    #  context: ./src
+    #restart: on-failure
     ports:
       - '80:80'
     healthcheck:

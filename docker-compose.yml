@@ -1,20 +1,18 @@
 version: '3.7'
 services:
   dokuwiki:
+    container_name: dokuwiki
     image: 'canelrom1/dokuwiki:latest'
     #build:
     #  context: ./src
-    container_name: dokuwiki
     #restart: on-failure
-    volumes:
-      - 'html:/var/www/html'
+    ports:
+      - '80:80'
     healthcheck:
       interval: 2m
       timeout: 30s
       retries: 3
       start_period: 0s
 
-volumes:
-  html:
 
 # vim: ft=yaml tw=80 et ts=2 sw=2 sts=2
