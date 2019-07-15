@@ -10,15 +10,25 @@ then
         sed -i "/upload_max_filesize/s/2M/${PHP_LIMITS_UPLOAD}/g" /etc/php7/php.ini
 fi
 
-if [ "${1:0:1}" = "-" ] ; then
+if [ -n "${APACHE_HTACCESS}" ] && [ "${APACHE_HTACCESS}" -ne 0 ]
+then
+        echo "HTACCESS" > /dev/stdout
+        sed -i '/LoadModule rewrite_module/s/^#//g' /etc/apache2/httpd.conf
+        sed -i '/AllowOverride/s/None/all/g' /etc/apache2/conf.d/website*
+fi
+
+if [ "${1:0:1}" = "-" ]
+then
 	exec /usr/sbin/httpd "$@"
 fi
 
-if [ "$1" = "/usr/sbin/httpd" ] ; then
+if [ "$1" = "/usr/sbin/httpd" ]
+then
 	exec "$@"
 fi
 
-if [ "$1" = "apache2" ] ; then
+if [ "$1" = "apache2" ]
+then
 	exec /usr/sbin/httpd -D FOREGROUND -f /etc/apache2/httpd.conf
 fi
 

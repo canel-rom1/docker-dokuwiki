@@ -10,6 +10,7 @@ ENV USER="apache"
 ENV DW_DIR="/var/www/html"
 ENV PORT=80
 ENV PHP_LIMITS_UPLOAD="25M"
+ENV APACHE_HTACCESS=1
 
 RUN apk update \
  && apk add --no-cache \
@@ -29,9 +30,6 @@ RUN apk update \
             php7-zlib
 
 #RUN adduser -D -H ${USER}
-
-RUN sed -i '/LoadModule rewrite_module/s/^#//g' /etc/apache2/httpd.conf \
- && sed -i '/AllowOverride/s/None/all/g' /etc/apache2/conf.d/website*
 
 RUN rm -fr ${DW_DIR} && mkdir -p ${DW_DIR} \
  && wget --no-check-certificate "${DOKUWIKI_DOWNLOAD_URL}" -P /tmp \
