@@ -1,7 +1,7 @@
 FROM canelrom1/apache2-php7:latest
 
 LABEL maintainer="Rom1 <rom1@canel.ch> - CANEL https://www.canel.ch"
-LABEL date="10/07/2019"
+LABEL date="15/07/2019"
 LABEL description="CMS Dokuwiki"
 
 ENV VERSION=$VERSION
@@ -9,6 +9,7 @@ ENV DOKUWIKI_DOWNLOAD_URL="https://download.dokuwiki.org/src/dokuwiki/dokuwiki-s
 ENV USER="apache"
 ENV DW_DIR="/var/www/html"
 ENV PORT=80
+ENV PHP_LIMITS_UPLOAD="25M"
 
 RUN apk update \
  && apk add --no-cache \

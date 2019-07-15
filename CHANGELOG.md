@@ -1,4 +1,6 @@
 # docker-dokuwiki
+## v0.5b - 15/07/2019
+- Modify PHP limits upload with environment variable (PHP_LIMITS_UPLOAD)
 ## v0.4b - 10/07/2019
 - Change PHP7 standelone to apache2.
 - Add mod_rewrite
