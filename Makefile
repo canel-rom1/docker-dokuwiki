@@ -1,7 +1,7 @@
 docker_name = dokuwiki
 docker_organization = canelrom1
 docker_image = dokuwiki
-docker_tag = $(shell date +%y%m%d.%H%M%S)
+docker_tag = $(shell date +%Y%m%d.%H%M%S)
 
 path_data = $(shell pwd)/data
 
