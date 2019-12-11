@@ -44,8 +44,8 @@ EXPOSE "${PORT}"
 
 HEALTHCHECK CMD curl -f "http://localhost:${PORT}" || exit 1
 
-COPY ./entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+COPY ./entrypoint-dokuwiki.sh /entrypoints/30-dokuwiki.sh
+RUN chmod +x /entrypoints/30-dokuwiki.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["apache2"]

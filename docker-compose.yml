@@ -8,6 +8,17 @@ services:
     #restart: on-failure
     ports:
       - '80:80'
+    environment:
+      # Apache2
+      APACHE_HTACCESS: "0"
+      # PHP
+      PHP_LIMITS_UPLOAD: "2M"
+      # Mail configuration
+      SMTP_HOST: "smtp.domain.tld"
+      SMTP_PORT: "587"
+      SMTP_USER: "user@domain.tld"
+      SMTP_PASSWORD: "mypassword"
+      SMTP_MAILFROM: "mailfrom@domain.tld"
     healthcheck:
       interval: 2m
       timeout: 30s
