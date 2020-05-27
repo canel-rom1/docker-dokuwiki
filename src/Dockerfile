@@ -21,6 +21,7 @@ RUN apk update \
             php7-iconv \
             php7-json \
             php7-ldap \
+            php7-mbstring \
             php7-mysqli \
             php7-opcache \
             php7-openssl \
