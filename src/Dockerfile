@@ -1,7 +1,7 @@
-FROM canelrom1/apache2-php7:latest
+FROM canelrom1/apache2-php7:0.3
 
 LABEL maintainer="Rom1 <rom1@canel.ch> - CANEL https://www.canel.ch"
-LABEL date="15/07/2019"
+LABEL date="27/05/2020"
 LABEL description="CMS Dokuwiki"
 
 ENV VERSION=$VERSION
