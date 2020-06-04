@@ -5,7 +5,8 @@ LABEL date="27/05/2020"
 LABEL description="CMS Dokuwiki"
 
 ENV VERSION=$VERSION
-ENV DOKUWIKI_DOWNLOAD_URL="https://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz"
+ENV DOKUWIKI_DOWNLOAD_URL="https://download.dokuwiki.org/src/dokuwiki/dokuwiki-rc.tgz"
+# ENV DOKUWIKI_DOWNLOAD_URL="https://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz"
 ENV USER="apache"
 ENV DW_DIR="/tmp/www"
 ENV PORT=80
