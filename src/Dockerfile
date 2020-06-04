@@ -7,7 +7,7 @@ LABEL description="CMS Dokuwiki"
 ENV VERSION=$VERSION
 ENV DOKUWIKI_DOWNLOAD_URL="https://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz"
 ENV USER="apache"
-ENV DW_DIR="/var/www/html"
+ENV DW_DIR="/tmp/www"
 ENV PORT=80
 ENV PHP_LIMITS_UPLOAD="25M"
 ENV APACHE_HTACCESS=1
@@ -38,9 +38,6 @@ RUN rm -fr ${DW_DIR} && mkdir -p ${DW_DIR} \
  && rm -f /tmp/dokuwiki \
  && chown ${USER}:${USER} -R ${DW_DIR}
  
-
-VOLUME	["${DW_DIR}"]
-
 EXPOSE "${PORT}"
 
 HEALTHCHECK CMD curl -f "http://localhost:${PORT}" || exit 1
