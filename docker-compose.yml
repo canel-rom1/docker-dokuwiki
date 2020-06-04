@@ -6,11 +6,15 @@ services:
     #build:
     #  context: ./src
     #restart: on-failure
+    volumes:
+      - "./backups/wiki:/var/www/html"
     ports:
       - '80:80'
     environment:
+      DEBUG: "1"
       # Apache2
       APACHE_HTACCESS: "0"
+      APACHE_HTML_DIR_TMP: "/tmp/blbalb"
       # PHP
       PHP_LIMITS_UPLOAD: "2M"
       # Mail configuration
