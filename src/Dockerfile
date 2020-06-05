@@ -1,4 +1,4 @@
-FROM canelrom1/apache2-php7:0.5
+FROM canelrom1/apache2-php7:0.5.1
 
 LABEL maintainer="Rom1 <rom1@canel.ch> - CANEL https://www.canel.ch"
 LABEL date="27/05/2020"
@@ -6,9 +6,8 @@ LABEL description="CMS Dokuwiki"
 
 ENV VERSION=$VERSION
 ENV DOKUWIKI_DOWNLOAD_URL="https://download.dokuwiki.org/src/dokuwiki/dokuwiki-rc.tgz"
-# ENV DOKUWIKI_DOWNLOAD_URL="https://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz"
 ENV USER="apache"
-ENV DW_DIR="/tmp/www"
+ENV DW_DIR="/var/www/html"
 ENV PORT=80
 ENV PHP_LIMITS_UPLOAD="25M"
 ENV APACHE_HTACCESS=1
@@ -33,10 +32,11 @@ RUN apk update \
 
 #RUN adduser -D -H ${USER}
 
-RUN rm -fr ${DW_DIR} && mkdir -p ${DW_DIR} \
+RUN rm -fr "${DW_DIR}"  \
+ && mkdir "${DW_DIR}" \
  && wget --no-check-certificate "${DOKUWIKI_DOWNLOAD_URL}" -P /tmp \
  && tar -zxf /tmp/dokuwiki* --strip-components=1 -C "${DW_DIR}" \
- && rm -f /tmp/dokuwiki \
+ && rm -f /tmp/dokuwiki* \
  && chown ${USER}:${USER} -R ${DW_DIR}
  
 EXPOSE "${PORT}"
