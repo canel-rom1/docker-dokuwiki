@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+
+RESTORE_FILE="/vol/wiki.tgz"
+VOLUM
+TMP_DIR="/tmp/"
+APACHE_WWW_DIR="/var/www/html"
+
+rm -fr "${APACHE_WWW_DIR}"
+
+cp "${RESTORE_FILE}" "${APACHE_WWW_DIR}"
+
+cd "${APACHE_WWW_DIR}"
+
+tar -zxvf wiki.tgz
+rm -f wiki.tgz
+
+
+cp 
+
+
+# vim: ft=sh

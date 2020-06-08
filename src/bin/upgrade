@@ -1,0 +1,26 @@
+#!/usr/bin/env sh
+
+
+DOKUWIKI_VERSION="rc"           # Release Candidate
+#DOKUWIKI_VERSION="stable"      # Stable
+#DOKUWIKI_VERSION="oldstable"   # Old Stable
+
+DOKUWIKI_SRC_FILES="dokuwiki-${DOKUWIKI_VERSION}.tgz"
+DOKUWIKI_DOWNLOAD_URL="https://download.dokuwiki.org/src/dokuwiki/${DOKUWIKI_SRC_FILES}"
+
+WORK_DIR="/tmp/dw-update"
+DOKUWIKI_WWW="/var/www/html"
+
+[ -d "${WORK_DIR}" ] && rm -fr "${WORK_DIR}"
+[ -d "${WORK_DIR}" ] || mkdir "${WORK_DIR}"
+
+cd "${WORK_DIR}"
+
+wget --no-check-certificate "${DOKUWIKI_DOWNLOAD_URL}"
+tar -zxf "${DOKUWIKI_SRC_FILES}"
+rm -f "${DOKUWIKI_SRC_FILES}" 
+cp -af dokuwiki*/* "${DOKUWIKI_WWW}"
+
+[ -d "${WORK_DIR}" ] && rm -fr "${WORK_DIR}"
+
+# vim: ft=sh
