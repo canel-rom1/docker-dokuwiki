@@ -5,7 +5,8 @@ LABEL date="27/05/2020"
 LABEL description="CMS Dokuwiki"
 
 ENV VERSION=$VERSION
-ENV DOKUWIKI_DOWNLOAD_URL="https://download.dokuwiki.org/src/dokuwiki/dokuwiki-rc.tgz"
+ENV DOKUWIKI_VERSION="stable"
+ENV DOKUWIKI_DOWNLOAD_URL="https://download.dokuwiki.org/src/dokuwiki/dokuwiki-${DOKUWIKI_VERSION}.tgz"
 ENV USER="apache"
 ENV DW_DIR="/var/www/html"
 ENV PORT=80
@@ -38,6 +39,9 @@ RUN rm -fr "${DW_DIR}"  \
  && tar -zxf /tmp/dokuwiki* --strip-components=1 -C "${DW_DIR}" \
  && rm -f /tmp/dokuwiki* \
  && chown ${USER}:${USER} -R ${DW_DIR}
+
+COPY ./bin/* /usr/local/bin/
+RUN chmod +x -R /usr/local/bin
  
 EXPOSE "${PORT}"
 

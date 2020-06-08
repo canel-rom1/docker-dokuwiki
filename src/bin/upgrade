@@ -17,9 +17,10 @@ DOKUWIKI_WWW="/var/www/html"
 cd "${WORK_DIR}"
 
 wget --no-check-certificate "${DOKUWIKI_DOWNLOAD_URL}"
-tar -zxf "${DOKUWIKI_SRC_FILES}"
-rm -f "${DOKUWIKI_SRC_FILES}" 
-cp -af dokuwiki*/* "${DOKUWIKI_WWW}"
+tar -zvxf "${DOKUWIKI_SRC_FILES}"
+rm -vf "${DOKUWIKI_SRC_FILES}" 
+cp -vaf dokuwiki*/* "${DOKUWIKI_WWW}"
+chown "${APACHE_RUN_USER}":"${APACHE_RUN_GROUP}" -vR "${DOKUWIKI_WWW}"
 
 [ -d "${WORK_DIR}" ] && rm -fr "${WORK_DIR}"
 
