@@ -1,6 +1,7 @@
 docker_name = dokuwiki
 docker_organization = canelrom1
 docker_image = dokuwiki
+dw_upgrade_version = stable
 docker_tag = $(shell date +%Y%m%d.%H%M%S)
 
 path_data = $(shell pwd)/data
@@ -32,6 +33,9 @@ stop:
 
 exec:
 	docker exec -it $(docker_image) sh
+
+dw-upgrade:
+	./scripts/upgrade.sh $(docker_image) $(dw_upgade_version)
 
 restart: stop run
 
