@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+  dokuwiki:
+    container_name: dokuwiki
+    # volumes:
+    #   - "./backups/wiki:/var/www/html"
+    environment:
+      DEBUG: "1"
+      # Apache2
+      APACHE_HTACCESS: "0"
+      # PHP
+      PHP_LIMITS_UPLOAD: "2M"
+      # Mail configuration
+      SMTP_HOST: "smtp.domain.tld"
+      SMTP_PORT: "587"
+      SMTP_USER: "user@domain.tld"
+      SMTP_PASSWORD: "mypassword"
+      SMTP_MAILFROM: "mailfrom@domain.tld"
+    labels:
+      - traefik.http.routers.http-dokuwiki.rule=Host(`wiki.domain.tld`)
+      - traefik.http.routers.https-dokuwiki.rule=Host(`wiki.domain.tld`)
+
+
+# vim: ft=yaml tw=80 et ts=2 sw=2 sts=2
