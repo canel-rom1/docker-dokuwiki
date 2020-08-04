@@ -1,9 +1,10 @@
 #!/usr/bin/env sh
 
 
-DOKUWIKI_VERSION="rc"           # Release Candidate
-#DOKUWIKI_VERSION="stable"      # Stable
-#DOKUWIKI_VERSION="oldstable"   # Old Stable
+DOKUWIKI_VERSION="${1:-rc}"
+# DOKUWIKI_VERSION="rc"          # Release Candidate
+# DOKUWIKI_VERSION="stable"      # Stable
+# DOKUWIKI_VERSION="oldstable"   # Old Stable
 
 DOKUWIKI_SRC_FILES="dokuwiki-${DOKUWIKI_VERSION}.tgz"
 DOKUWIKI_DOWNLOAD_URL="https://download.dokuwiki.org/src/dokuwiki/${DOKUWIKI_SRC_FILES}"
