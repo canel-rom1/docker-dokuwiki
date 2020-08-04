@@ -6,9 +6,8 @@ services:
     # build:
     #  context: ./src
     # restart: on-failure
-    ports:
-      - '80:80'
-      - '443:443'
+    networks:
+      - wan
     environment:
       DEBUG: "1"
       # Apache2
@@ -21,11 +20,25 @@ services:
       SMTP_USER: "user@domain.tld"
       SMTP_PASSWORD: "mypassword"
       SMTP_MAILFROM: "mailfrom@domain.tld"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.http-dokuwiki.rule=Host(`dokuwiki.domain.tld`)
+      - traefik.http.routers.http-dokuwiki.entryPoints=http
+      - traefik.http.routers.http-dokuwiki.middlewares=https-redirect@file
+      - traefik.http.routers.https-dokuwiki.tls=true
+      - traefik.http.routers.https-dokuwiki.tls.certresolver=letsencrypt
+      - traefik.http.routers.https-dokuwiki.entrypoints=https
+      - traefik.http.routers.https-dokuwiki.rule=Host(`dokuwiki.domain.tld`)
     healthcheck:
       interval: 2m
       timeout: 30s
       retries: 3
       start_period: 0s
+
+networks:
+  wan:
+    name: wan
+    external: True
 
 
 # vim: ft=yaml tw=80 et ts=2 sw=2 sts=2
